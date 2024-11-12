@@ -1,0 +1,40 @@
+.hero-section h1 {
+    font-size: 3em;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .hero-section h3 {
+    font-size: 1.8em;
+    color: #333;
+  }
+  
+  .hero-section p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  
+  .hero-section .btn-link {
+    font-size: 1.2em;
+    text-decoration: none;
+  }
+  
+  .text-primary-color{
+    color: #8C98CC; /* Bootstrap's primary color */
+  }
+  
+  .custom-btn {
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+  background-color: #8C98CC;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.custom-btn:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}

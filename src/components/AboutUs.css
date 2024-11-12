@@ -1,0 +1,101 @@
+/* Creative Strategy Section CSS */
+.creative-strategy-section {
+  background-color: #f9f9f6;
+  border-radius: 12px;
+  padding: 40px;
+}
+
+.text-section h4 {
+  font-size: 1.2rem;
+  color: #888;
+  font-weight: 600;
+}
+
+.text-section h2 {
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: #2e444e;
+}
+
+.text-section p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #6c757d;
+}
+
+.text-section ul {
+  margin-top: 20px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.text-section ul li {
+  font-size: 1rem;
+  color: #2e444e;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.text-section ul li span {
+  color: #0096a1;
+  font-size: 1.4rem;
+  margin-right: 8px;
+  margin-bottom: 15px;
+}
+
+.text-section .btn-primary {
+  background-color: #0096a1;
+  border-color: #0096a1;
+  padding: 10px 20px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.text-section .btn-primary:hover {
+  background-color: #007d85;
+}
+
+/* Image section styling */
+.image-section .large-img {
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.image-section .small-img {
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure images maintain responsiveness */
+.image-section .img-fluid {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.image-section .img-fluid:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .creative-strategy-section {
+    padding: 20px;
+  }
+
+  .text-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .text-section ul li {
+    font-size: 1rem;
+  }
+
+  .text-section .btn-primary {
+    font-size: 0.9rem;
+  }
+
+  .image-section {
+    margin-top: 20px;
+  }
+}

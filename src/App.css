@@ -1,0 +1,32 @@
+.App {
+    font-style: normal;
+  }
+.navBarBox {
+    margin-bottom: 6%;
+}
+
+html {
+  font-family:'Font Awesome 5 Free';
+  font-size: 16px;
+  font-smooth: auto;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+body {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: whitesmoke;
+  color: #555;
+}
+
+
+h1 {
+  margin: 0;
+  font-size: 2.75rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+

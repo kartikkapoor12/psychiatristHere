@@ -1,0 +1,59 @@
+
+.announcement-strip {
+  background-color: #FFF5F2; /* Light peach background */
+  width: 100%; /* Full width */
+  position: relative; /* Positioned below the navbar */
+  top: 0; /* Stick to the top of the content */
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
+/* Container and text alignment */
+.announcement-text {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Heading text */
+.announcement-heading {
+  color: #ff6f61;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* Book Now text */
+.book-now {
+  color: #ff6f61;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* Container adjustment */
+.container-strip {
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+  /* Stack content vertically on mobile */
+  .container-strip {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* Ensure the announcement text takes full width */
+  .announcement-text {
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  /* Adjust font size for mobile */
+  .announcement-heading,
+  .book-now {
+    font-size: 0.85rem;
+  }
+}

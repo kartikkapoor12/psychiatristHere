@@ -1,0 +1,39 @@
+/* Testimonials.css */
+.testimonial {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+}
+
+.testimonial-img {
+  width: 80px;
+  height: 80px;
+}
+
+.testimonial-text {
+  font-style: italic;
+  color: #6c757d;
+}
+
+.stars {
+  font-size: 1.2rem;
+}
+
+/* Adjustments for slick slider dots */
+.slick-dots li button:before {
+  color: #007bff;
+}
+
+.slick-prev, .slick-next {
+  color: #007bff;
+  z-index: 1;
+}
+
+@media (max-width: 576px) {
+  .testimonial-item {
+    padding: 0;
+  }
+}

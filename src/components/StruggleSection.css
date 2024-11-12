@@ -1,0 +1,114 @@
+/* Styling for the struggles section */
+.struggles-section {
+    background-color: #eff5ee;
+    padding: 50px 0;
+    text-align: center;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 40px;
+  }
+  
+  /* Card styling */
+  .struggle-card {
+    background-color: #4d6742;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  
+  .struggle-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Icon container styling */
+  .icon-container {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: white; /* Gold color for the icons */
+  }
+  
+  /* Card title and text */
+  .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    color: #d1d1d1;
+  }
+  
+  /* Learn More link */
+  .learn-more-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #D1D1D1;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .learn-more-link:hover {
+    color: #ffcc00;
+  }
+  .consult-coach-section {
+    background-color: #eff5e9;
+    padding: 30px 0;
+}
+
+.consult-coach-card {
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.icon-wrapper {
+    background-color: #ffebe6;
+    border-radius: 50%;
+    padding: 10px;
+    display: inline-block;
+}
+
+.question-icon {
+    font-size: 40px;
+    color: #f57a57;
+}
+
+.consult-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+}
+
+.consult-text {
+    font-size: 16px;
+    color: #6d6e70;
+    margin-top: 5px;
+}
+
+.consult-btn {
+    border: 2px solid #f57a57;
+    border-radius: 50px;
+    padding: 10px 25px;
+    font-size: 16px;
+    color: #f57a57;
+    background-color: transparent;
+    transition: all 0.3s;
+}
+
+.consult-btn:hover {
+    background-color: #f57a57;
+    color: white;
+}

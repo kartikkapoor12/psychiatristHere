@@ -1,0 +1,49 @@
+/* Styles for the navbar button with calendar icon */
+.book-appointment-btn {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.book-appointment-btn i {
+  margin-right: 0.5rem; /* Space between icon and text */
+}
+
+/* Shadow for the navbar */
+.shadow-navbar {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+/* Peach outlined button for the booking appointment */
+.btn-outline-peach {
+  border: 2px solid #ff6f61; /* Peach color */
+  color: #ff6f61; /* Text color peach */
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-peach:hover {
+  background-color: #ff6f61; /* Peach background on hover */
+  color: white; /* White text on hover */
+}
+
+/* Ensure the button is aligned on mobile view */
+
+@media (max-width: 768px) {
+  .book-appointment-btn {
+    font-size: 0.9rem;
+    padding: 0.4rem 1rem;
+  }
+}
+/* Logo styling */
+.navbar-logo {
+  height: 40px; /* Adjust the height based on your design */
+  width: auto;  /* Maintain aspect ratio */
+}
+
+@media (max-width: 768px) {
+  .navbar-logo {
+    height: 35px; /* Adjust for smaller screens if needed */
+  }
+}
