@@ -6,7 +6,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node server.js"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
@@ -19,8 +20,11 @@
     "axios": "^1.7.7",
     "body-parser": "^1.20.3",
     "bootstrap": "^5.3.3",
+    "cors": "^2.8.5",
     "date-fns": "^4.1.0",
+    "express": "^4.21.1",
     "jquery": "^3.7.1",
+    "mysql2": "^3.11.4",
     "popper.js": "^1.16.1",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.5",
@@ -44,5 +48,10 @@
     "react-router-dom": "^6.26.2",
     "sass": "^1.79.4",
     "vite": "^5.4.1"
-  }
+  },
+  "description": "This is my friend's website for his business.",
+  "main": "eslint.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
