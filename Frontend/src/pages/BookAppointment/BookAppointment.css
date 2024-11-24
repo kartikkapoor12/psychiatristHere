@@ -275,3 +275,9 @@
   background-color: #006666;
   color: #fff;
 }
+/* Ensure the label is stacked above the input */
+form label {
+  display: block; /* Forces the label to be a block element */
+  margin-bottom: 5px; /* Adds spacing between the label and input */
+}
+

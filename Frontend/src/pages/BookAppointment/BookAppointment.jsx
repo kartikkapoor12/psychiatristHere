@@ -127,45 +127,8 @@ const BookAppointment = () => {
           <Form onSubmit={handleSubmit}>
             {/* Step-based content */}
          
-              {step === 1 && (
+            {step === 1 && (
               <>
-                <div className="question-title">
-                    You need Consultation for Self or someone else?
-                  </div>
-                  <div className="checkbox-group">
-                    <label
-                      className={`checkbox-button ${
-                        formData.consultationFor === "self" ? "active" : ""
-                      }`}
-                    >
-                      <input
-                        type="radio"
-                        name="consultationFor"
-                        value="self"
-                        checked={formData.consultationFor === "self"}
-                        onChange={() => handleOptionSelect("consultationFor", "self")}
-                      />
-                      Yes, for me
-                    </label>
-
-                    <label
-                      className={`checkbox-button ${
-                        formData.consultationFor === "someone else" ? "active" : ""
-                      }`}
-                    >
-                      <input
-                        type="radio"
-                        name="consultationFor"
-                        value="someone else"
-                        checked={formData.consultationFor === "someone else"}
-                        onChange={() => handleOptionSelect("consultationFor", "someone else")}
-                      />
-                      No, for someone else
-                    </label>
-                  </div>
-
-
-
                 <Form.Group controlId="fullName" className="mt-3">
                   <Form.Label>Full Name</Form.Label>
                   <Form.Control
@@ -178,12 +141,19 @@ const BookAppointment = () => {
                 </Form.Group>
 
                 <Form.Group controlId="dateOfBirth" className="mt-3">
-                  <Form.Label>Date of Birth</Form.Label>
-                  <Form.Control
-                    type="date"
-                    name="dateOfBirth"
-                    value={formData.dateOfBirth}
-                    onChange={handleChange}
+                  <Form.Label className="mb-1">Date of Birth</Form.Label> {/* Add margin below the label */}
+                  <ReactDatePicker
+                    selected={formData.dateOfBirth ? new Date(formData.dateOfBirth) : null}
+                    onChange={(date) =>
+                      handleOptionSelect("dateOfBirth", date.toISOString().split("T")[0])
+                    }
+                    maxDate={new Date()} // Restricts selection to past dates
+                    placeholderText="YYYY-MM-DD"
+                    className="form-control custom-date-picker" // Ensure consistent styling
+                    dateFormat="yyyy-MM-dd"
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
                   />
                 </Form.Group>
 
@@ -227,7 +197,6 @@ const BookAppointment = () => {
                 </Form.Group>
               </>
             )}
-
 {step === 2 && (
               <>
                 <Form.Group controlId="reasonForCounseling">
