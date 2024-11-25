@@ -129,6 +129,40 @@ const BookAppointment = () => {
          
             {step === 1 && (
               <>
+              <div className="question-title">
+                    You need Consultation for Self or someone else?
+                  </div>
+                  <div className="checkbox-group">
+                    <label
+                      className={`checkbox-button ${
+                        formData.consultationFor === "self" ? "active" : ""
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name="consultationFor"
+                        value="self"
+                        checked={formData.consultationFor === "self"}
+                        onChange={() => handleOptionSelect("consultationFor", "self")}
+                      />
+                      Yes, for me
+                    </label>
+
+                    <label
+                      className={`checkbox-button ${
+                        formData.consultationFor === "someone else" ? "active" : ""
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name="consultationFor"
+                        value="someone else"
+                        checked={formData.consultationFor === "someone else"}
+                        onChange={() => handleOptionSelect("consultationFor", "someone else")}
+                      />
+                      No, for someone else
+                    </label>
+                  </div>
                 <Form.Group controlId="fullName" className="mt-3">
                   <Form.Label>Full Name</Form.Label>
                   <Form.Control
