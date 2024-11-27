@@ -6,3 +6,4 @@ This is my friend's website for his business.
 3. in backend - npm init -y  & npm install mysql express & npm i cors
 4. Create server.js (check file)
 5. do npm start 
+6. Provided with 3 tables that needs to be setup as to start the backend
