@@ -1,0 +1,9 @@
+
+-- Table: Appointment
+CREATE TABLE Appointment (
+    appointment_id INT PRIMARY KEY AUTO_INCREMENT,
+    uid INT NOT NULL,
+    date DATE NOT NULL,
+    time_Slot ENUM('Morning', 'Afternoon', 'Evening') NOT NULL,
+    FOREIGN KEY (uid) REFERENCES User(uid)
+);

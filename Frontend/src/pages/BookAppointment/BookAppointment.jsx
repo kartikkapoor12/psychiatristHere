@@ -4,6 +4,7 @@ import "./BookAppointment.css";
 import axios from "axios";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"; 
+import { v4 as uuidv4 } from 'uuid';  // Optional: if using uuid library
 
 const BookAppointment = () => {
   useEffect(() => {
@@ -22,6 +23,7 @@ const BookAppointment = () => {
     preferredContact: "",
     sessionFrequency: "",
     virtualCounseling: "",
+    email: "",
     previousCounseling: "",
     takingMedication: "",
     reasonForCounseling: "",
@@ -30,6 +32,7 @@ const BookAppointment = () => {
     diagnosisDetails: "",
     recentLifeChanges: "",
     additionalNotes: "",
+    previousTherapyType:"",
     consent: ""
   });
   const [missingFields, setMissingFields] = useState([]);
@@ -39,14 +42,15 @@ const BookAppointment = () => {
     2: ["reasonForCounseling", "previousCounseling", "takingMedication"],
     3: ["mentalHealthDiagnosis"],
     4: ["sessionFrequency", "virtualCounseling"],
-    5: ["consent"]
+    5: ["appointmentDate","timeSlot","consent"]
   };
   const namingLabels = {
     "consultationFor":"Consultation For",
     "fullName" : "Full Name",
     "dateOfBirth" : "Date of birth", 
-    "contactInfo" : "Constact Information", 
+    "contactInfo" : "Constact Information (phone Number)", 
     "preferredContact" : "Contact Info",
+    "email" : "E-mail",
 
     "reasonForCounseling" : "Reason For Counseling",
     "previousCounseling" : "Previous Counseling sessions",
@@ -58,6 +62,8 @@ const BookAppointment = () => {
 
     "virtualCounseling" : "Virtual counseling sessions",
 
+    "appointmentDate": "Date selection",
+    "timeSlot" : "Time slot selection",
     "consent" : "Terms and conditions"
     
   }
@@ -70,9 +76,13 @@ const BookAppointment = () => {
  }
   const validateFields = () => {
     const fieldsToCheck = mandatoryFields[step] || [];
+    if (formData.preferredContact === "Email") {
+      fieldsToCheck.push("email");
+    }
     const missing = fieldsToCheck.filter((field) => !formData[field]);
     setMissingFields(missing);
     return missing.length === 0;
+    
   };
 
   const handleChange = (e) => {
@@ -92,13 +102,24 @@ const BookAppointment = () => {
 
   const handleBack = () => setStep(step - 1);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validateFields()) {
-      console.log("Form submitted:", formData);
-      // Add backend POST call here
-    }
-  };
+    const handleSubmit = (e) => {
+      e.preventDefault(); // Prevent form reload
+      
+      if (validateFields()) {
+        // Make a POST request to the backend with formData as body
+        axios
+          .post("http://localhost:8081/submit", formData)
+          .then((response) => {
+            console.log("Form submitted successfully:", response.data);
+            alert("Appointment booked successfully!");
+          })
+          .catch((error) => {
+            console.error("Error submitting the form:", error);
+            alert("An error occurred while booking the appointment. Please try again.");
+          });
+      }
+    };
+  
 
   const progressPercentage = (step / 5) * 100;
 
@@ -192,7 +213,7 @@ const BookAppointment = () => {
                 </Form.Group>
 
                 <Form.Group controlId="contactInfo" className="mt-3">
-                  <Form.Label>Contact Information (Email/Phone)</Form.Label>
+                  <Form.Label>Phone Number</Form.Label>
                   <Form.Control
                     type="text"
                     name="contactInfo"
@@ -229,6 +250,19 @@ const BookAppointment = () => {
                     onChange={handleChange}
                   />
                 </Form.Group>
+                
+                {formData.preferredContact === "Email" && (
+              <Form.Group controlId="email" className="mt-3">
+                <Form.Label>Email Address</Form.Label>
+                <Form.Control
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Enter your email address"
+                />
+              </Form.Group>
+            )}
               </>
             )}
 {step === 2 && (
@@ -424,7 +458,7 @@ const BookAppointment = () => {
             )}
 {step === 5 && (
   <>
-    <Form.Group controlId="dateSelection" className="mt-3">
+    <Form.Group controlId="appointmentDate" className="mt-3">
       <Form.Label>
         Select an appointment date
         <span className="disclaimer"> (You can only book slots for the next 10 days)</span>
@@ -440,7 +474,7 @@ const BookAppointment = () => {
       />
     </Form.Group>
 
-    <Form.Group controlId="timeSlotSelection" className="mt-3">
+    <Form.Group controlId="timeSlot" className="mt-3">
       <Form.Label>Select a time slot</Form.Label>
       <div className="time-slot-group">
         <label

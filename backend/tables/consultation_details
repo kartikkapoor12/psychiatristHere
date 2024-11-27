@@ -1,0 +1,32 @@
+
+-- Table: Consultation_Details
+CREATE TABLE Consultation_Details (
+    appointment_id INT PRIMARY KEY, -- Primary Key
+    uid INT NOT NULL,               -- Foreign Key referencing User(uid)
+    consultation_For ENUM('self', 'other') NOT NULL,
+    preferred_Contact ENUM('Phone', 'Email', 'Text') NOT NULL,
+    session_Frequency ENUM('Weekly', 'Bi-weekly', 'Monthly') NOT NULL,
+    virtual_Counseling ENUM('Yes', 'No') NOT NULL,
+    previous_Counseling ENUM('Yes', 'No') NOT NULL,
+    previous_Therapy_Type TEXT,
+    taking_Medication ENUM('Yes', 'No') NOT NULL,
+    medication_List TEXT,
+    reason_For_Counseling TEXT,
+    mental_Health_Diagnosis ENUM('Yes', 'No') NOT NULL,
+    diagnos_is_Details TEXT,
+    recent_Life_Changes TEXT,
+    additional_Notes TEXT,
+    consent ENUM('Yes', 'No') NOT NULL,
+    FOREIGN KEY (appointment_id) REFERENCES Appointment(appointment_id), -- FK referencing Appointment
+    FOREIGN KEY (uid) REFERENCES User(uid) -- FK referencing User
+);
+
+
+ALTER TABLE `jyoti_project`.`consultation_details` 
+DROP FOREIGN KEY `consultation_details_ibfk_1`;
+ALTER TABLE `jyoti_project`.`consultation_details` 
+CHANGE COLUMN `appointment_id` `appointment_id` INT NOT NULL AUTO_INCREMENT ;
+ALTER TABLE `jyoti_project`.`consultation_details` 
+ADD CONSTRAINT `consultation_details_ibfk_1`
+  FOREIGN KEY (`appointment_id`)
+  REFERENCES `jyoti_project`.`appointment` (`appointment_id`);
