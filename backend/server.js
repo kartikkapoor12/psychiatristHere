@@ -27,12 +27,24 @@ app.post("/submit", (req, res) => {
     // Start the transaction
     db.beginTransaction((err) => {
         if (err) return res.json({ error: "Transaction start failed", details: err });
+     
+       // Build the query dynamically based on provided input
+       let checkUserSql = "SELECT uid FROM jyoti_project.user WHERE ";
+       const checkUserParams = [];
 
-        const checkUserSql = "SELECT uid FROM jyoti_project.user WHERE email = ?";
-        const userEmail = req.body.email;
+       if (req.body.email && req.body.email.trim() !== '') {
+           checkUserSql += "email = ?";
+           checkUserParams.push(req.body.email);
+       }
+
+       if (req.body.contactInfo && req.body.contactInfo.trim() !== '') {
+           if (checkUserParams.length > 0) checkUserSql += " OR ";
+           checkUserSql += "phone_number = ?";
+           checkUserParams.push(req.body.contactInfo);
+       }
 
         // Check if user already exists
-        db.query(checkUserSql, [userEmail], (err, results) => {
+        db.query(checkUserSql, [checkUserParams], (err, results) => {
             if (err) {
                 return db.rollback(() => res.json({ error: "Failed to check user existence", details: err }));
             }
