@@ -1,0 +1,66 @@
+.booking-completed {
+    background: linear-gradient(135deg, #368484, #e8f8f8);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Add padding to prevent sticking on smaller screens */
+    box-sizing: border-box; /* Ensure padding doesn't affect dimensions */
+  }
+  
+  .card-booking {
+    border: none;
+    border-radius: 15px;
+    background-color: white;
+    max-width: 500px;
+    padding: 40px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin: 20px; /* Add margin for additional spacing */
+    box-sizing: border-box; /* Include padding in total size */
+  }
+  
+  .icon-container img {
+    width: 80px;
+    animation: bounce 1s infinite alternate;
+  }
+  
+  .title {
+    color: #368484;
+    font-weight: 700;
+    font-size: 28px;
+    margin-top: 20px; /* Add spacing above */
+  }
+  
+  .description {
+    color: #6c757d;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 15px; /* Add spacing below title */
+  }
+  
+  .btn-rounded {
+    border-radius: 30px;
+    background-color: #368484;
+    border: none;
+    padding: 10px 30px;
+    font-size: 16px;
+    margin-top: 20px; /* Add spacing above button */
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn-rounded:hover {
+    background-color: #2b6d6d;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  @keyframes bounce {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-5px);
+    }
+  }
+  

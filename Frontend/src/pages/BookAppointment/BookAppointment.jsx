@@ -4,22 +4,22 @@ import "./BookAppointment.css";
 import axios from "axios";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"; 
-import { v4 as uuidv4 } from 'uuid';  // Optional: if using uuid library
+import { useNavigate } from "react-router-dom";
 
 const BookAppointment = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     axios
       .get("http://localhost:8081/")
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }, []);
-
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     consultationFor: "",
     fullName: "",
     dateOfBirth: "",
-    contactInfo: "",
+    phoneNumber: "",
     preferredContact: "",
     sessionFrequency: "",
     virtualCounseling: "",
@@ -38,7 +38,7 @@ const BookAppointment = () => {
   const [missingFields, setMissingFields] = useState([]);
 
   const mandatoryFields = {
-    1: ["consultationFor", "fullName", "dateOfBirth", "contactInfo", "preferredContact"],
+    1: ["consultationFor", "fullName", "dateOfBirth", "phoneNumber", "preferredContact"],
     2: ["reasonForCounseling", "previousCounseling", "takingMedication"],
     3: ["mentalHealthDiagnosis"],
     4: ["sessionFrequency", "virtualCounseling"],
@@ -48,7 +48,7 @@ const BookAppointment = () => {
     "consultationFor":"Consultation For",
     "fullName" : "Full Name",
     "dateOfBirth" : "Date of birth", 
-    "contactInfo" : "Constact Information (phone Number)", 
+    "phoneNumber" : "Contact Information (phone Number)", 
     "preferredContact" : "Contact Info",
     "email" : "E-mail",
 
@@ -111,7 +111,7 @@ const BookAppointment = () => {
           .post("http://localhost:8081/submit", formData)
           .then((response) => {
             console.log("Form submitted successfully:", response.data);
-            alert("Appointment booked successfully!");
+             navigate(`/doneWithBooking`);
           })
           .catch((error) => {
             console.error("Error submitting the form:", error);
@@ -171,15 +171,15 @@ const BookAppointment = () => {
 
                     <label
                       className={`checkbox-button ${
-                        formData.consultationFor === "someone else" ? "active" : ""
+                        formData.consultationFor === "other" ? "active" : ""
                       }`}
                     >
                       <input
                         type="radio"
                         name="consultationFor"
-                        value="someone else"
-                        checked={formData.consultationFor === "someone else"}
-                        onChange={() => handleOptionSelect("consultationFor", "someone else")}
+                        value="other"
+                        checked={formData.consultationFor === "other"}
+                        onChange={() => handleOptionSelect("consultationFor", "other")}
                       />
                       No, for someone else
                     </label>
@@ -212,12 +212,12 @@ const BookAppointment = () => {
                   />
                 </Form.Group>
 
-                <Form.Group controlId="contactInfo" className="mt-3">
+                <Form.Group controlId="phoneNumber" className="mt-3">
                   <Form.Label>Phone Number</Form.Label>
                   <Form.Control
                     type="text"
-                    name="contactInfo"
-                    value={formData.contactInfo}
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
                     onChange={handleChange}
                     placeholder="Enter your contact information"
                   />

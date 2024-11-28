@@ -37,14 +37,14 @@ app.post("/submit", (req, res) => {
            checkUserParams.push(req.body.email);
        }
 
-       if (req.body.contactInfo && req.body.contactInfo.trim() !== '') {
-           if (checkUserParams.length > 0) checkUserSql += " OR ";
+       if (req.body.phoneNumber && req.body.phoneNumber.trim() !== '') {
+           if (checkUserParams.length > 0) checkUserSql += " AND ";
            checkUserSql += "phone_number = ?";
-           checkUserParams.push(req.body.contactInfo);
+           checkUserParams.push(req.body.phoneNumber);
        }
 
         // Check if user already exists
-        db.query(checkUserSql, [checkUserParams], (err, results) => {
+        db.query(checkUserSql, checkUserParams, (err, results) => {
             if (err) {
                 return db.rollback(() => res.json({ error: "Failed to check user existence", details: err }));
             }
@@ -61,7 +61,7 @@ app.post("/submit", (req, res) => {
                 const userValues = [
                     req.body.fullName,
                     req.body.dateOfBirth,
-                    req.body.contactInfo,
+                    req.body.phoneNumber,
                     req.body.email
                 ];
 
